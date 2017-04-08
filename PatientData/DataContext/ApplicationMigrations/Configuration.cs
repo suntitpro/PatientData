@@ -1,15 +1,13 @@
-using PatientData.DataContext;
+using System.Data.Entity.Migrations;
 
-namespace PatientData.Migrations
+namespace PatientData.DataContext.ApplicationMigrations
 {
-    using System.Data.Entity.Migrations;
-
     internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDb>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            ContextKey = "PatientData.Models.ApplicationDbContext";
+            MigrationsDirectory = @"DataContext\IdentityMigrations";
             AutomaticMigrationDataLossAllowed = true;
         }
 
