@@ -8,7 +8,6 @@ using PatientData.Models;
 namespace PatientData.Controllers
 {
     [EnableCors("*", "*", "GET")]
-    [Authorize]
     public class PatientsController : ApiController
     {
         public IEnumerable<Patient> Get()

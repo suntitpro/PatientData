@@ -6,9 +6,8 @@ namespace PatientData.DataContext.ApplicationMigrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
             MigrationsDirectory = @"DataContext\IdentityMigrations";
-            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(ApplicationDb context)
