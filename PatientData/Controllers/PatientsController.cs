@@ -17,22 +17,30 @@ namespace PatientData.Controllers
             }
         }
 
-        public HttpResponseMessage Get(int id)
+        public IHttpActionResult Get(int id)
         {
             using (var db = new ApplicationDbContext())
             {
                 var patient = db.Patients.Include("Ailments").Include("Medications").First(i => i.Id == id);
-                return patient == null ? Request.CreateErrorResponse(HttpStatusCode.NotFound, "Patient not found") : Request.CreateResponse(patient);
+                if (patient == null)
+                {
+                    return NotFound();
+                }
+                return Ok(patient);
             }
         }
 
         [Route("api/patients/{id:int}/medications")]
-        public HttpResponseMessage GetMedications(int id)
+        public IHttpActionResult GetMedications(int id)
         {
             using (var db = new ApplicationDbContext())
             {
                 var patient = db.Patients.Include("Ailments").Include("Medications").First(i => i.Id == id);
-                return patient == null ? Request.CreateErrorResponse(HttpStatusCode.NotFound, "Patient not found") : Request.CreateResponse(patient.Medications);
+                if (patient == null)
+                {
+                    return NotFound();
+                }
+                return Ok(patient.Medications);
             }
         }
     }
