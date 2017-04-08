@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using PatientData.DataContext;
 using PatientData.Models;
 
 namespace PatientData.Controllers
@@ -12,7 +13,7 @@ namespace PatientData.Controllers
     {
         public IEnumerable<Patient> Get()
         {
-            using (var db = new ApplicationDbContext())
+            using (var db = new ApplicationDb())
             {
                 return db.Patients.Include("Ailments").Include("Medications").ToList();
             }
@@ -20,7 +21,7 @@ namespace PatientData.Controllers
 
         public IHttpActionResult Get(int id)
         {
-            using (var db = new ApplicationDbContext())
+            using (var db = new ApplicationDb())
             {
                 var patient = db.Patients.Include("Ailments").Include("Medications").First(i => i.Id == id);
                 if (patient == null)
@@ -34,7 +35,7 @@ namespace PatientData.Controllers
         [Route("api/patients/{id:int}/medications")]
         public IHttpActionResult GetMedications(int id)
         {
-            using (var db = new ApplicationDbContext())
+            using (var db = new ApplicationDb())
             {
                 var patient = db.Patients.Include("Ailments").Include("Medications").First(i => i.Id == id);
                 if (patient == null)

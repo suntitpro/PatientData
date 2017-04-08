@@ -1,8 +1,10 @@
+using PatientData.DataContext;
+
 namespace PatientData.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDb>
     {
         public Configuration()
         {
@@ -11,7 +13,7 @@ namespace PatientData.Migrations
             AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(Models.ApplicationDbContext context)
+        protected override void Seed(ApplicationDb context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using PatientData.DataContext;
 
 namespace PatientData.Models
 {
@@ -7,7 +8,7 @@ namespace PatientData.Models
     {
         public static void Seed()
         {
-            using (var db = new ApplicationDbContext())
+            using (var db = new ApplicationDb())
             {
                 if (db.Patients.AsQueryable().Any(p => p.Name == "Scott")) return;
                 var data = new List<Patient>
