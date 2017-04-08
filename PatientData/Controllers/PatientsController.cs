@@ -25,5 +25,15 @@ namespace PatientData.Controllers
                 return patient == null ? Request.CreateErrorResponse(HttpStatusCode.NotFound, "Patient not found") : Request.CreateResponse(patient);
             }
         }
+
+        [Route("api/patients/{id:int}/medications")]
+        public HttpResponseMessage GetMedications(int id)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var patient = db.Patients.Include("Ailments").Include("Medications").First(i => i.Id == id);
+                return patient == null ? Request.CreateErrorResponse(HttpStatusCode.NotFound, "Patient not found") : Request.CreateResponse(patient.Medications);
+            }
+        }
     }
 }
