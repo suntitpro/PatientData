@@ -62,5 +62,4 @@
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
 
-PatientData/Scripts/* linguist-vendored
-
+PatientData/Scripts/* linguist-vendored=true
