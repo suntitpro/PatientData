@@ -62,5 +62,5 @@
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
 
-PatientData/PatientData/Scripts/* linguist-vendored
-Scripts/*.js linguist-vendored
+PatientData/Scripts/* linguist-vendored
+PatientData/Scripts/*.js linguist-vendored
